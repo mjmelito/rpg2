@@ -4,9 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>RPG</title>
+  <p style="background-image: url('https://art.pixilart.com/d9b02b2e60dff44.png');">
 </head>
+
 <body>
-  
+  <form id="new-player">
+    <label for="name">Enter your name:</label>
+    <input id="name" type="text">
+    <p>Select your Class</p>
+    <input type="radio" name="type" id="knight" value="knight" required>
+    <label for="knight">knight</label>
+    <button type="submit">Submit</button>
+  </form>
+  <div class="contentWrapper">
+    <div class="logo">RPG</div>
+    <div class="playerStats">
+      <h3 id="playerName"></h3>
+      <h3 id="level"></h3>
+      <h5 id="exp"></h3>
+      <h3 id="hp"></h3> 
+      <h3 id="type"></h3>
+    </div>
+
+    <div class="story">
+      <h4>You are in battle with a bear.</h4>
+      <h4>You hit the bear for 4 damage </h4>
+    </div>
+    <div class="buttons">
+      <button type="button" id="attackBtn">Attack</button>
+      <button type="itemsBtn">Items</button>
+      <button type="spellsBtn">Spells</button>
+    </div>
+    <div id="attackDisplay" class="hidden">
+      <h3 class="atk" id="stab">Stab</h3>
+      <h3 class="atk" id="slash">Slash</h3>
+      <h3 class="atk" id="pummel">Pummel</h3>
+      <h3 class="atk" id="shield">Shield</h3>
+    </div>
+
+
+  </div>
 </body>
 </html>
