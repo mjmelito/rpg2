@@ -1,11 +1,7 @@
 import Player from '../src/js/player.js';
 
 describe('Player', () => {
-  // let player = player;
 
-  // beforeEach(() => {
-  //   let player = new Player("Bob", 1, 'knight', 10, 0, []);
-  // })
 
   test('should correctly create a player object with name, level, hp, exp, and items attributes', () => {
     let player = new Player("Bob", 1, 'knight', 10, 0, [], 0);
