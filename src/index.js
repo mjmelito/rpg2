@@ -7,6 +7,7 @@ import Monster from './js/monster.js';
 let player = new Player("Bob", 2, "Knight", 100, 0, [], 0, 0);
 let monster = new Monster("Bear", 1, 100, 0);
 
+
 let stabFunction = () => {
   let humanDamage = player.damageCalculator();
   monster.hp = monster.hp - humanDamage;
@@ -15,7 +16,7 @@ let stabFunction = () => {
 let slashFunction = () => {
   player.diceRoll();
   if (player.roll > 3) {
-    let humanDamage = player.damageCalculator() * 1.4;
+    let humanDamage = player.damageCalculator() * 1.1;
     player.damage = humanDamage;
     monster.hp = monster.hp - humanDamage;
   } else {
@@ -26,7 +27,7 @@ let slashFunction = () => {
 let pummelFunction = () => {
   player.diceRoll();
   if (player.roll >= 5) {
-    let humanDamage = player.damageCalculator() * 1.7;
+    let humanDamage = player.damageCalculator() * 1.3;
     player.damage = humanDamage;
     monster.hp = monster.hp - humanDamage;
   } else {
@@ -70,7 +71,7 @@ let playerExp = document.getElementById('exp');
 let healthStat = document.getElementById('hp');
 let playerClass = document.getElementById('type');
 let attackStyle = "";
-// let stabBool = false;
+
 
 
 
@@ -79,11 +80,6 @@ playerLevel.innerText = "Level: " + player.level;
 playerExp.innerText = "Experience: " + player.exp + "/100";
 healthStat.innerText = "HP:" + player.hp;
 playerClass.innerText = "Class: " + player.type;
-
-document.addEventListener("DOMContentLoaded", function() {
-  const attackBtn = document.getElementById('attackBtn');
-  attackBtn.addEventListener('click', attackBtnUI);
-});
 
 document.addEventListener("DOMContentLoaded", function() {
   const stabBtn = document.getElementById('stab');
@@ -119,6 +115,21 @@ document.addEventListener("DOMContentLoaded", function() {
   shieldBtn.addEventListener('click', combatFunction);
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  const attackBtn = document.getElementById('attackBtn');
+  attackBtn.addEventListener('click', attackBtnUI);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const startBtn = document.getElementById('start');
+  startBtn.addEventListener('click', startBattle);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const endBtn = document.getElementById('end');
+  endBtn.addEventListener('click', startBattle);
+});
+
 let attackBtnBool = false;
 const attackBtnUI = (event) => {
   event.preventDefault();
@@ -131,3 +142,20 @@ const attackBtnUI = (event) => {
   }
 };
 
+let startBattleBool = false;
+let endBattleBool = true;
+const startBattle = (event) => {
+  event.preventDefault();
+  if (startBattleBool === false && endBattleBool === true) {
+    document.querySelector('#startBattle').setAttribute('class', 'hidden');
+    document.querySelector('#endBattle').removeAttribute('class');
+    startBattleBool = true;
+    endBattleBool = false;
+    console.log("its working");
+  } else if (startBattleBool === true && endBattleBool === false){
+    document.querySelector('#startBattle').removeAttribute('class');
+    document.querySelector('#endBattle').setAttribute('class', 'hidden');
+    endBattleBool = true;
+    startBattleBool = false;
+  }
+};
