@@ -4,21 +4,48 @@ import './css/styles.css';
 import Player from './js/player.js';
 import Monster from './js/monster.js';
 
-let player = new Player("Bob", 2, "Knight", 10, 0, [], 0);
-let monster = new Monster("Bear", 1, 100);
+let player = new Player("Bob", 2, "Knight", 100, 0, [], 0, 0);
+let monster = new Monster("Bear", 1, 100, 0);
 
-let damageCalculator = () => {
-  player.diceRoll();
-  let damage = player.level * player.roll;
-  console.log(damage + " " + player.level + " " + player.roll);
-  return damage;
-};
-
-let combatFunction = () => {
-  let humanDamage = damageCalculator();
-  console.log(humanDamage);
+let stabFunction = () => {
+  let humanDamage = player.damageCalculator();
   monster.hp = monster.hp - humanDamage;
   console.log(monster.hp);
+  let monsterDamage = monster.damageCalculator();
+  player.hp = player.hp - monsterDamage;
+  console.log(player.hp);
+}
+
+let slashFunction = () => {
+  player.diceRoll();
+  if (player.roll > 2) {
+    let humanDamage = player.damageCalculator();
+    monster.hp = monster.hp - humanDamage;
+    console.log(monster.hp);
+    let monsterDamage = monster.damageCalculator();
+    player.hp = player.hp - monsterDamage;
+    console.log(player.hp);
+  } else {
+    console.log("YOU MISSED");
+  }
+}
+
+let pummelFunction = () => {
+  let humanDamage = player.damageCalculator();
+  monster.hp = monster.hp - humanDamage;
+  console.log(monster.hp);
+  let monsterDamage = monster.damageCalculator();
+  player.hp = player.hp - monsterDamage;
+  console.log(player.hp);
+}
+
+let shieldFunction = () => {
+  let humanDamage = player.damageCalculator();
+  monster.hp = monster.hp - humanDamage;
+  console.log(monster.hp);
+  let monsterDamage = monster.damageCalculator();
+  player.hp = player.hp - monsterDamage;
+  console.log(player.hp);
 }
 
 let playerName = document.getElementById('playerName');
@@ -40,7 +67,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const stabBtn = document.getElementById('stab');
-  stabBtn.addEventListener('click', combatFunction);
+  stabBtn.addEventListener('click', stabFunction);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const slashBtn = document.getElementById('slash');
+  slashBtn.addEventListener('click', slashFunction);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const pummelBtn = document.getElementById('pummel');
+  pummelBtn.addEventListener('click', pummelFunction);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const shieldBtn = document.getElementById('shield');
+  shieldBtn.addEventListener('click', shieldFunction);
 });
 
 let attackBtnBool = false;
