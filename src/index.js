@@ -10,42 +10,58 @@ let monster = new Monster("Bear", 1, 100, 0);
 let stabFunction = () => {
   let humanDamage = player.damageCalculator();
   monster.hp = monster.hp - humanDamage;
-  console.log(monster.hp);
-  let monsterDamage = monster.damageCalculator();
-  player.hp = player.hp - monsterDamage;
-  console.log(player.hp);
 }
 
 let slashFunction = () => {
   player.diceRoll();
-  if (player.roll > 2) {
-    let humanDamage = player.damageCalculator();
+  if (player.roll > 3) {
+    let humanDamage = player.damageCalculator() * 1.4;
+    player.damage = humanDamage;
     monster.hp = monster.hp - humanDamage;
-    console.log(monster.hp);
-    let monsterDamage = monster.damageCalculator();
-    player.hp = player.hp - monsterDamage;
-    console.log(player.hp);
   } else {
     console.log("YOU MISSED");
   }
 }
 
 let pummelFunction = () => {
-  let humanDamage = player.damageCalculator();
-  monster.hp = monster.hp - humanDamage;
-  console.log(monster.hp);
-  let monsterDamage = monster.damageCalculator();
-  player.hp = player.hp - monsterDamage;
-  console.log(player.hp);
+  player.diceRoll();
+  if (player.roll >= 5) {
+    let humanDamage = player.damageCalculator() * 1.7;
+    player.damage = humanDamage;
+    monster.hp = monster.hp - humanDamage;
+  } else {
+    console.log("YOU MISSED");
+  }
 }
 
-let shieldFunction = () => {
-  let humanDamage = player.damageCalculator();
-  monster.hp = monster.hp - humanDamage;
-  console.log(monster.hp);
+let combatFunction = () => {
   let monsterDamage = monster.damageCalculator();
+  if (attackStyle === "stab") {
+    stabFunction();
+  } else if (attackStyle === "slash") {
+    slashFunction();
+  } else if (attackStyle === "pummel") {
+    pummelFunction();
+  } else if (attackStyle === "shield") {
+    monsterDamage = 0;
+    console.log("BLOCKED");
+  }
+
   player.hp = player.hp - monsterDamage;
-  console.log(player.hp);
+  console.log("player hits monster for " + player.damage + "." + " monster HP: " + monster.hp);
+  console.log("monster hits player for " + monster.damage + "." + " player HP: " + player.hp);
+
+  winFunction();
+}
+
+let winFunction = () => {
+  if (player.hp <= 0) {
+    console.log("You Lose.")
+  } else if (monster.hp <= 0) {
+    console.log("You Win.")
+  } else {
+    console.log("The Battle Rages On.")
+  }
 }
 
 let playerName = document.getElementById('playerName');
@@ -53,6 +69,10 @@ let playerLevel = document.getElementById('level');
 let playerExp = document.getElementById('exp');
 let healthStat = document.getElementById('hp');
 let playerClass = document.getElementById('type');
+let attackStyle = "";
+// let stabBool = false;
+
+
 
 playerName.innerText = "Name: " + player.name;
 playerLevel.innerText = "Level: " + player.level;
@@ -67,22 +87,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const stabBtn = document.getElementById('stab');
-  stabBtn.addEventListener('click', stabFunction);
+  stabBtn.addEventListener('click', () => {
+    attackStyle = "stab";
+  });
+  stabBtn.addEventListener('click', combatFunction);
 });
 
 document.addEventListener("DOMContentLoaded", function() {
   const slashBtn = document.getElementById('slash');
-  slashBtn.addEventListener('click', slashFunction);
+  slashBtn.addEventListener('click', () => {
+    attackStyle = "slash";
+  });
+  slashBtn.addEventListener('click', combatFunction);
+  
 });
 
 document.addEventListener("DOMContentLoaded", function() {
   const pummelBtn = document.getElementById('pummel');
-  pummelBtn.addEventListener('click', pummelFunction);
+  pummelBtn.addEventListener('click', () => {
+    attackStyle = "pummel";
+  });
+  pummelBtn.addEventListener('click', combatFunction);
+  
 });
 
 document.addEventListener("DOMContentLoaded", function() {
   const shieldBtn = document.getElementById('shield');
-  shieldBtn.addEventListener('click', shieldFunction);
+  shieldBtn.addEventListener('click', () => {
+    attackStyle = "shield";
+  });
+  shieldBtn.addEventListener('click', combatFunction);
 });
 
 let attackBtnBool = false;

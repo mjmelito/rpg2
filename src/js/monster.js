@@ -7,7 +7,7 @@ export default class Monster {
   }
 
   damageCalculator() {
-    this.damage = Math.floor(Math.random() * 7) * this.level;
+    this.damage = Math.floor(Math.random() * 11) * this.level;
     return this.damage;
   }
 }
