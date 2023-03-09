@@ -13,7 +13,7 @@ export default class Player {
   damageCalculator() {
     this.damage = Math.floor(Math.random() * 11) * this.level;
     return this.damage;
-}
+  }
 
   diceRoll() {
     this.roll= Math.floor(Math.random() * 10 + 1);

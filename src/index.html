@@ -9,16 +9,18 @@
 </head>
 
 <body>
-  <form id="new-player">
+  <!-- <form id="new-player">
     <label for="name">Enter your name:</label>
     <input id="name" type="text">
     <p>Select your Class</p>
     <input type="radio" name="type" id="knight" value="knight" required>
     <label for="knight">knight</label>
     <button type="submit">Submit</button>
-  </form>
+  </form> -->
   <div class="contentWrapper">
-    <div class="logo">RPG</div>
+    <!-- <div class="logo">
+    </div> -->
+    <!-- <br><br> -->
     <div class="playerStats">
       <h3 id="playerName"></h3>
       <h3 id="level"></h3>
@@ -26,31 +28,48 @@
       <h3 id="hp"></h3> 
       <h3 id="type"></h3>
     </div>
+<br> <br>
+    
+    <div class="buttonStoryWrapper" >
+      <div class="story">
+        <p>ssssssssssssssssssssss</p>
+        <p>ssssssssssssssssssssssssssss</p>
+      </div>
+      <div class="buttons">
+        <button type="button" id="attackBtn" disabled>Attack</button>
+        <button type="itemsBtn" disabled>Items</button>
+        <button type="spellsBtn" disabled>Spells</button>
+      </div>
+      <div id="attackDisplay" class="hidden" value ="";>
+        <button class="atk" id="stab">Stab</button>
+        <button class="atk" id="slash">Slash</button>
+        <button class="atk" id="pummel">Pummel</button>
+        <button class="atk" id="shield">Shield</button>
+      </div>
 
-    <div class="story">
-      <h4>You are in battle with a bear.</h4>
-      <h4>You hit the bear for 4 damage </h4>
-    </div>
-    <div class="buttons">
-      <button type="button" id="attackBtn">Attack</button>
-      <button type="itemsBtn">Items</button>
-      <button type="spellsBtn">Spells</button>
-    </div>
-    <div id="attackDisplay" class="hidden">
-      <button class="atk" id="stab">Stab</button>
-      <button class="atk" id="slash">Slash</button>
-      <button class="atk" id="pummel">Pummel</button>
-      <button class="atk" id="shield">Shield</button>
+      <div id="startBattle" class="">
+        <button class="start" id="start">Battle!</button>
+      </div>
+
+      <div id="endBattle" class="hidden">
+        <button class="end" id="end">End Battle!</button>
+      </div>
+
+      <br><br>
+      <div id="winBattle" class="hidden">
+        <p class="win" id="win" style="font-size: 200px;">You Won!</p>
+      </div>
+
+      <div id="loseBattle" class="hidden">
+        <p class="lose" id="lose" style="font-size: 200px;">You Lost!</p>
+      </div>
     </div>
 
-    <div id="startBattle" class="">
-      <button class="start" id="start">Battle!</button>
+    <div class="monsterStats">
+      <h3 id="monsterName"></h3>
+      <h3 id="monsterLevel"></h3>
+      <h3 id="monsterHp"></h3> 
     </div>
-
-    <div id="endBattle" class="hidden">
-      <button class="end" id="end">End Battle!</button>
-    </div>
-
   </div>
 </body>
 </html>

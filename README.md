@@ -2,7 +2,7 @@
 
 #### (Brief Description of Application)
 
-#### By (Your Name Here)
+#### By _ **Matt Melito**_ , _**Billy Lee**_ , and _**Brandon Spear**_
 
 ## Technologies Used
 
