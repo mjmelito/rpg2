@@ -4,7 +4,7 @@ import './css/styles.css';
 import Player from './js/player.js';
 import Monster from './js/monster.js';
 
-let player = new Player("Bob", 2, "Knight", 100, 0, [], 0, 0);
+let player = new Player("Player", 2, "Knight", 100, 0, [], 0, 0);
 let monster = new Monster("Bear", 1, 100, 0);
 
 let stabFunction = () => {

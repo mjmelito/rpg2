@@ -2,7 +2,8 @@
   display: none;
 }
 body {
-  background-color: gray;
+  height: 100vh;
+  background-image: linear-gradient(to right, black, white)
 }
 .story {
   width: 60%;
@@ -29,11 +30,14 @@ body {
 }
 
 .playerStats{
-  border: 1px solid black;
+  border: 1px solid rgb(253, 253, 253);
+  padding: 20px;
+  color: rgb(217, 217, 217);
   margin-left: -100px;
 }
 .monsterStats{
   border: 1px solid black;
+  padding: 20px;
   float: right;
   margin-right: -100px;
 }
